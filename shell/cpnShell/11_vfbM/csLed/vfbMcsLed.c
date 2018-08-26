@@ -1,19 +1,19 @@
 /**************************************************************************
 * @copyright    :Copyright(C), 2018, pxf, person.
-* @file         :cccLedCtrl2.c
+* @file         :vfbMcsLed.c
 * @author       :pxf
 * @version      :v1.0
-* @date         :2018/08/25 22:36:04
+* @date         :2018/08/26 21:32:19
 * @brief        :
 * @others       :
-* @history      :180825 pxf 初建立
+* @history      :180826 pxf 初次建立
 ***************************************************************************/
 
-#include "cccLedCtrl2.h"
+#include "vfbMcsLed.h"
 
 
 /***********************************************************
-* @function       :cccLedCtrl2()
+* @function       :vfbMcsLed()
 * @description    :
 * @input          :
 * @output         :
@@ -21,7 +21,7 @@
 * @calledBy       :
 * @others         :
 ***********************************************************/
-void cccLedCtrl2(void)
+void vfbMcsLed(void)
 {}
 
 

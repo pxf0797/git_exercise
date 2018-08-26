@@ -1,20 +1,19 @@
 /**************************************************************************
 * @copyright    :Copyright(C), 2018, pxf, person.
-* @file         :cufLedFun.h
+* @file         :abicsLed.c
 * @author       :pxf
 * @version      :v1.0
-* @date         :2018/08/25 22:33:19
+* @date         :2018/08/26 21:32:19
 * @brief        :
 * @others       :
-* @history      :180825 pxf 初建立
+* @history      :180826 pxf 初次建立
 ***************************************************************************/
 
-#ifndef CUFLEDFUN_H_
-#define CUFLEDFUN_H_
+#include "abicsLed.h"
 
 
 /***********************************************************
-* @function       :cufLedFun()
+* @function       :abicsLed()
 * @description    :
 * @input          :
 * @output         :
@@ -22,9 +21,8 @@
 * @calledBy       :
 * @others         :
 ***********************************************************/
-void cufLedFun(void);
+void abicsLed(void)
+{}
 
-
-#endif
 
 /**************************** Copyright(C) pxf ****************************/
