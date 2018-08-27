@@ -1,16 +1,16 @@
 /**************************************************************************
 * @copyright    :Copyright(C), 2018, pxf, person.
-* @file         :csLedErrCode.h
+* @file         :casSchErrCode.h
 * @author       :pxf
 * @version      :v1.0
-* @date         :2018/08/26 21:32:19
-* @brief        :
+* @date         :2018/08/27 22:43:29
+* @brief        :组件casSch 内部各组成部分错误码定义头文件
 * @others       :
-* @history      :180826 pxf 初次建立
+* @history      :180827 pxf 初次建立
 ***************************************************************************/
 
-#ifndef CSLEDERRCODE_H_
-#define CSLEDERRCODE_H_
+#ifndef CASSCHERRCODE_H_
+#define CASSCHERRCODE_H_
 
 /*errClassify
 ************************************************************
@@ -30,13 +30,13 @@
 
 /*errDefine
 ************************************************************************************************************************
-*                                | csLedPartId |   errCode  |  errClassify  |  errRanking     |
+*                                | casSchPartId |   errCode  |  errClassify  |  errRanking     |
 ***********************************************************************************************************************/
-#define csLed_part1_pi             0                                                          // 组件部件1
-#define csLed_part1_err1                           0        // EC_EC_cie       EC_ER_warning  // 组件部件1错误1
+#define casSch_part1_pi            0                                                           // 组件部件1
+#define casSch_part1_err1                           0        // EC_EC_cie       EC_ER_warning  // 组件部件1错误1
 /**********************************************************************************************************************/
-#define csLed_part2_pi             1                                                          // 组件部件2
-#define csLed_part2_err1                           0        // EC_EC_cie       EC_ER_warning  // 组件部件2错误1
+#define casSch_part2_pi            1                                                           // 组件部件1
+#define casSch_part2_err1                           0        // EC_EC_cie       EC_ER_warning  // 组件部件1错误1
 /**********************************************************************************************************************/
 
 #endif

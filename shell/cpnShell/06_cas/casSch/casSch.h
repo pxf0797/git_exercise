@@ -1,21 +1,21 @@
 /**************************************************************************
 * @copyright    :Copyright(C), 2018, pxf, person.
-* @file         :csLed.h
+* @file         :casSch.h
 * @author       :pxf
 * @version      :v1.0
-* @date         :2018/08/26 21:32:19
-* @brief        :
+* @date         :2018/08/27 22:43:29
+* @brief        :组件casSch 输入类、组件类、输出类数据类型声明头文件
 * @others       :
-* @history      :180826 pxf 初次建立
+* @history      :180827 pxf 初次建立
 ***************************************************************************/
 
-#ifndef CSLED_H_
-#define CSLED_H_
+#ifndef CASSCH_H_
+#define CASSCH_H_
 
 #include "..\..\01_std\std.h"
 #include "..\..\06_cas\casSch\casSch.h"
-#include "csLedCfg.h"
-#include "csLedErrCode.h"
+#include "casSchCfg.h"
+#include "casSchErrCode.h"
 
 /***********************************************************
 * 组件初始化
@@ -24,25 +24,25 @@
 * 输入: 无
 * 输出: int16 0-成功,-1-失败
 ***********************************************/
-int16 vfbIcsLedInit(void);
+int16 vfbIcasSchInit(void);
 
 /*组件初始化
 * 输入: 无
 * 输出: int16 0-成功,-1-失败
 ***********************************************/
-int16 csLedInit(void);
+int16 casSchInit(void);
 
 /*组件输出初始化
 * 输入: 无
 * 输出: int16 0-成功,-1-失败
 ***********************************************/
-int16 vfbOcsLedInit(void);
+int16 vfbOcasSchInit(void);
 
 /*管理组件初始化外部声明
 * 输入: 无
 * 输出: int16 0-成功,-1-失败
 ***********************************************/
-extern int16 vfbMcsLedInit(void);
+extern int16 vfbMcasSchInit(void);
 
 
 /***********************************************************
@@ -52,7 +52,7 @@ extern int16 vfbMcsLedInit(void);
 * 输入: 无
 * 输出: 无
 ***********************************************/
-void csLedSch(void);
+void casSchSch(void);
 
 
 /***********************************************************
@@ -70,78 +70,80 @@ void csLedSch(void);
 ***********************************************************/
 /*组件输出类声明
 ***********************************************/
-CL(vfbOcsLed){
-    hvfbOcsLed self;
-    hvfbOcsLed (*init)(hvfbOcsLed cthis);
+CL(vfbOcasSch){
+    hvfbOcasSch self;
+    hvfbOcasSch (*init)(hvfbOcasSch cthis);
 
     // 组件调度参数
     schParam schParam;
 
     // 示例组件输出类功能函数
-    //void (*example)(hvfbOcsLed t);
+    //void (*example)(hvfbOcasSch t);
     //TODO
 };
 
-/*外部接口声明
-*  命名方式: 存放类+实际类+实际类功能
+/*组件输出类外部接口声明
+* 命名方式: 存放类+实际类+实际类功能
 ***********************************************/
-//extern void vfbMcsLed_vfbOcsLed_example(hvfbOcsLed t);
+//extern void vfbMcasSch_vfbOcasSch_example(hvfbOcasSch t);
 //TODO
 
 /*组件输出类实例
 ***********************************************/
-extern vfbOcsLed vfbOcsLedA;
+extern vfbOcasSch vfbOcasSchA;
 
 
 /***********************************************************
 * 组件类定义
 ***********************************************************/
 /*组件状态机状态
+* 有两个状态init/default，状态list不显示，默认给出
+* 状态list需根据实际应用进行重写，list修改后相应状态函数得对应修改
 ***********************************************/
-#define SM_CSLED_STA_LIST(_) \
-    _(smcsLed, sta1)\
-    _(smcsLed, sta2)
+#define SM_CASSCH_STA_LIST(_) \
+    _(smcasSch, sta1)\
+    _(smcasSch, sta2)
 
 /*组件状态机定义
 ***********************************************/
-SMDC(smcsLed, SM_CSLED_STA_LIST)
+SMDC(smcasSch, SM_CASSCH_STA_LIST)
 {
     sta next;
     //TODO
 
     // 注入组件类
-    void *csLed;
+    void *casSch;
 };
 
 
 /*组件类声明
 ***********************************************/
-CL(csLed){
-    hcsLed self;
-    hcsLed (*init)(hcsLed cthis, hvfbOcsLed vfbOcsLed, hstaAct smcsLed);
+CL(casSch){
+    hcasSch self;
+    hcasSch (*init)(hcasSch cthis, hstaAct smcasSch, hvfbOcasSch vfbOcasSch);
 
     // 组件运行状态机
-    smcsLedRec smcsLedRec;
-    hstaAct smcsLed;
+    smcasSchRec smcasSchRec;
+    hstaAct smcasSch;
 
     // 组件运行功能函数
-    void (*run)(hcsLed t);
-    //void (*example)(hcsLed t);
+    void (*run)(hcasSch t);
+    //void (*example)(hcasSch t);
     //TODO
 
     // 注入组件输出类
-    INJ(vfbOcsLed, vfbOcsLed);
+    INJ(vfbOcasSch, vfbOcasSch);
 };
 
 /*异步调度功能函数
-*  命名方式: 存放类+实际类+实际类功能
+* 命名方式: 存放类+实际类+实际类功能
 ***********************************************/
-//extern void csLed_abi_example(void);
+//void casSch_abi_example(void);
 //TODO
 
 /*组件类实例
 ***********************************************/
-extern csLed csLedA;
+extern casSch casSchA;
 
 
 /***********************************************************
@@ -149,20 +151,20 @@ extern csLed csLedA;
 ***********************************************************/
 /*组件输入类声明
 ***********************************************/
-CL(vfbIcsLed){
-    hvfbIcsLed self;
-    hvfbIcsLed (*init)(hvfbIcsLed cthis, hcsLed csLed);
+CL(vfbIcasSch){
+    hvfbIcasSch self;
+    hvfbIcasSch (*init)(hvfbIcasSch cthis, hcasSch casSch);
 
-    //void (*example)(hvfbIcsLed t);
+    //void (*example)(hvfbIcasSch t);
     //TODO
 
     // 注入组件类
-    INJ(csLed, csLed);
+    INJ(casSch, casSch);
 };
 
 /*组件输入类实例
 ***********************************************/
-extern vfbIcsLed vfbIcsLedA;
+extern vfbIcasSch vfbIcasSchA;
 
 
 #endif

@@ -39,29 +39,41 @@ class cpnShell:
     __fCommentsOrder = ('@copyright','@file','@author','@version','@date','@brief','@others','@history')
     __funcCommentsOrder = ('@function','@description','@input','@output','@calls','@calledBy','@others')
     
-    __cpnFolder = {'01_std':' ',
-        '02_bm':' ',
-        '03_bsp':' ',
-        '04_abi':' ',
-        '05_cpnInit':' ',
-        '06_cas':' ',
-        '07_cs':' ',
-        '08_cuf':' ',
-        '09_cpc':' ',
-        '10_ccc':' ',
-        '11_vfbM':' ',
+    __cpnTypeIndex = {'std':'01',
+        'bm':'02',
+        'bsp':'03',
+        'abi':'04',
+        'cpnInit':'05',
+        'cas':'06',
+        'cs':'07',
+        'cuf':'08',
+        'cpc':'09',
+        'ccc':'10',
+        'vfbM':'11',
     }
-    __cpnConstructorCommand = {'01_std':' ',
-        '02_bm':' ',
-        '03_bsp':' ',
-        '04_abi':' ',
-        '05_cpnInit':' ',
-        '06_cas':' ',
-        '07_cs':' ',
-        '08_cuf':' ',
-        '09_cpc':' ',
-        '10_ccc':' ',
-        '11_vfbM':' ',
+    __cpnFolder = {'std':' ',
+        'bm':' ',
+        'bsp':' ',
+        'abi':' ',
+        'cpnInit':' ',
+        'cas':' ',
+        'cs':' ',
+        'cuf':' ',
+        'cpc':' ',
+        'ccc':' ',
+        'vfbM':' ',
+    }
+    __cpnConstructorCommand = {'std':' ',
+        'bm':' ',
+        'bsp':' ',
+        'abi':' ',
+        'cpnInit':' ',
+        'cas':' ',
+        'cs':' ',
+        'cuf':' ',
+        'cpc':' ',
+        'ccc':' ',
+        'vfbM':' ',
     }
 
     def __init__(self,cpnType,cpnName):
@@ -72,52 +84,52 @@ class cpnShell:
         self.__cpnName = cpnName
         if(self.__cpnType == 'cas'):
             __cpnTypeCorrect = 1
-            self.__cpnFolder['03_bsp'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['04_abi'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['06_cas'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['11_vfbM'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['bsp'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['abi'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['cas'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['vfbM'] = self.__cpnType+self.__cpnName
             
             self.cpnConstructorCommandInit()
-            self.__cpnConstructorCommand['03_bsp'] = self.bspcpnGenFunc
-            self.__cpnConstructorCommand['04_abi'] = self.abicpnGenFunc
-            self.__cpnConstructorCommand['06_cas'] = self.cascpnGenFunc
-            self.__cpnConstructorCommand['11_vfbM'] = self.vfbMcpnGenFunc
+            self.__cpnConstructorCommand['bsp'] = self.bspcpnGenFunc
+            self.__cpnConstructorCommand['abi'] = self.abicpnGenFunc
+            self.__cpnConstructorCommand['cas'] = self.cpnGenFunc #self.cascpnGenFunc
+            self.__cpnConstructorCommand['vfbM'] = self.vfbMcpnGenFunc
         elif(self.__cpnType == 'cs'):
             __cpnTypeCorrect = 1
-            self.__cpnFolder['04_abi'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['07_cs'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['11_vfbM'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['abi'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['cs'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['vfbM'] = self.__cpnType+self.__cpnName
             
             self.cpnConstructorCommandInit()
-            self.__cpnConstructorCommand['04_abi'] = self.abicpnGenFunc
-            self.__cpnConstructorCommand['07_cs'] = self.cscpnGenFunc
-            self.__cpnConstructorCommand['11_vfbM'] = self.vfbMcpnGenFunc
+            self.__cpnConstructorCommand['abi'] = self.abicpnGenFunc
+            self.__cpnConstructorCommand['cs'] = self.cpnGenFunc #self.cscpnGenFunc
+            self.__cpnConstructorCommand['vfbM'] = self.vfbMcpnGenFunc
         elif(self.__cpnType == 'cuf'):
             __cpnTypeCorrect = 1
-            self.__cpnFolder['04_abi'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['08_cuf'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['11_vfbM'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['abi'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['cuf'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['vfbM'] = self.__cpnType+self.__cpnName
             
             self.cpnConstructorCommandInit()
-            self.__cpnConstructorCommand['04_abi'] = self.abicpnGenFunc
-            self.__cpnConstructorCommand['08_cuf'] = self.cufcpnGenFunc
-            self.__cpnConstructorCommand['11_vfbM'] = self.vfbMcpnGenFunc
+            self.__cpnConstructorCommand['abi'] = self.abicpnGenFunc
+            self.__cpnConstructorCommand['cuf'] = self.cpnGenFunc #self.cufcpnGenFunc
+            self.__cpnConstructorCommand['vfbM'] = self.vfbMcpnGenFunc
         elif(self.__cpnType == 'cpc'):
             __cpnTypeCorrect = 1
-            self.__cpnFolder['09_cpc'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['11_vfbM'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['cpc'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['vfbM'] = self.__cpnType+self.__cpnName
             
             self.cpnConstructorCommandInit()
-            self.__cpnConstructorCommand['09_cpc'] = self.cpccpnGenFunc
-            self.__cpnConstructorCommand['11_vfbM'] = self.vfbMcpnGenFunc            
+            self.__cpnConstructorCommand['cpc'] = self.cpnGenFunc #self.cpccpnGenFunc
+            self.__cpnConstructorCommand['vfbM'] = self.vfbMcpnGenFunc            
         elif(self.__cpnType == 'ccc'):
             __cpnTypeCorrect = 1
-            self.__cpnFolder['10_ccc'] = self.__cpnType+self.__cpnName
-            self.__cpnFolder['11_vfbM'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['ccc'] = self.__cpnType+self.__cpnName
+            self.__cpnFolder['vfbM'] = self.__cpnType+self.__cpnName
             
             self.cpnConstructorCommandInit()
-            self.__cpnConstructorCommand['10_ccc'] = self.ccccpnGenFunc
-            self.__cpnConstructorCommand['11_vfbM'] = self.vfbMcpnGenFunc    
+            self.__cpnConstructorCommand['ccc'] = self.cpnGenFunc #self.ccccpnGenFunc
+            self.__cpnConstructorCommand['vfbM'] = self.vfbMcpnGenFunc    
         else:
             __cpnTypeCorrect = 0
             sys.stderr.write("cpnType parameter err, please input corret parameter\n")
@@ -258,10 +270,6 @@ class cpnShell:
         comments = ('/***********************************************************\n')
         comments += ('* 组件初始化\n')
         comments += ('***********************************************************/\n')
-        #comments += self.cpnHeaerInitFuncComment('vfbI'+name,'','组件输入初始化')
-        #comments += self.cpnHeaerInitFuncComment(name,'','组件初始化')
-        #comments += self.cpnHeaerInitFuncComment('vfbO'+name,'','组件输出初始化')
-        #comments += self.cpnHeaerInitFuncComment('vfbM'+name,'extern ','管理组件初始化外部声明')
         comments += self.cpnHeaerAndSourceInitFuncComment('','vfbI'+name,'(void);','组件输入初始化')
         comments += self.cpnHeaerAndSourceInitFuncComment('',name,'(void);','组件初始化')
         comments += self.cpnHeaerAndSourceInitFuncComment('','vfbO'+name,'(void);','组件输出初始化')
@@ -270,7 +278,6 @@ class cpnShell:
         comments += ('/***********************************************************\n')
         comments += ('* 组件调度\n')
         comments += ('***********************************************************/\n')
-        #comments += self.cpnHeaerSchFuncComment(name,'','组件进行调度')
         comments += self.cpnHeaerAndSourceSchFuncComment('',name,'(void);','组件进行调度')
         comments += ('\n'*1)
         return comments
@@ -291,7 +298,7 @@ class cpnShell:
         comments += ('    //TODO\n')
         comments += ('};\n')
         comments += ('\n'*1)
-        comments += ('/*外部接口声明\n*  命名方式: 存放类+实际类+实际类功能\n')
+        comments += ('/*组件输出类外部接口声明\n* 命名方式: 存放类+实际类+实际类功能\n')
         comments += ('***********************************************/\n')
         comments += ('//extern void vfbM%s_vfbO%s_example(hvfbO%s t);\n//TODO\n' %(name,name,name))
         comments += ('\n'*1)
@@ -307,6 +314,8 @@ class cpnShell:
         comments += ('* 组件类定义\n')
         comments += ('***********************************************************/\n')
         comments += ('/*组件状态机状态\n')
+        comments += ('* 有两个状态init/default，状态list不显示，默认给出\n')
+        comments += ('* 状态list需根据实际应用进行重写，list修改后相应状态函数得对应修改\n')
         comments += ('***********************************************/\n')
         comments += ('#define SM_%s_STA_LIST(_) \\\n' %name.upper())
         comments += ('    _(sm%s, sta1)\\\n    _(sm%s, sta2)\n' %(name,name))
@@ -321,7 +330,7 @@ class cpnShell:
         comments += ('/*组件类声明\n')
         comments += ('***********************************************/\n')
         comments += ('CL(%s){\n' %name)
-        comments += ('    h%s self;\n    h%s (*init)(h%s cthis, hvfbO%s vfbO%s, hstaAct sm%s);\n' %(name,name,name,name,name,name))
+        comments += ('    h%s self;\n    h%s (*init)(h%s cthis, hstaAct sm%s, hvfbO%s vfbO%s);\n' %(name,name,name,name,name,name))
         comments += ('\n'*1)
         comments += ('    // 组件运行状态机\n    sm%sRec sm%sRec;\n    hstaAct sm%s;\n' %(name,name,name))
         comments += ('\n'*1)
@@ -330,9 +339,9 @@ class cpnShell:
         comments += ('\n'*1)
         comments += ('    // 注入组件输出类\n    INJ(vfbO%s, vfbO%s);\n};\n' %(name,name))
         comments += ('\n'*1)
-        comments += ('/*异步调度功能函数\n*  命名方式: 存放类+实际类+实际类功能\n')
+        comments += ('/*异步调度功能函数\n* 命名方式: 存放类+实际类+实际类功能\n')
         comments += ('***********************************************/\n')
-        comments += ('//extern void %s_abi_example(void);\n//TODO\n' %name)
+        comments += ('//void %s_abi_example(void);\n//TODO\n' %name)
         comments += ('\n'*1)
         comments += ('/*组件类实例\n')
         comments += ('***********************************************/\n')
@@ -359,7 +368,32 @@ class cpnShell:
         comments += ('extern vfbI%s vfbI%sA;\n' %(name,name))
         comments += ('\n'*1)
         return comments
-        
+    
+    def cpnHeaderGenerateVfbMcpnComment(self,name):
+        '''组件管理类注释'''
+        comments = ('/***********************************************************\n')
+        comments += ('* 组件管理类定义\n')
+        comments += ('***********************************************************/\n')
+        comments += ('/*组件管理类声明\n')
+        comments += ('***********************************************/\n')
+        comments += ('CL(vfbM%s){\n' %name)
+        comments += ('    hvfbM%s self;\n    hvfbM%s (*init)(hvfbM%s cthis, hvfbO%s vfbO%s, hvfbIcasSch vfbIcasSch);\n' %(name,name,name,name,name))
+        comments += ('\n'*1)
+        comments += ('    //void (*example)(hvfbM%s t);\n    //TODO\n' %name)
+        comments += ('\n'*1)
+        comments += ('    // 注入组件类\n    INJ(vfbO%s, vfbO%s);\n' %(name,name))
+        comments += ('    INJ(vfbIcasSch, vfbIcasSch);\n}\n')
+        comments += ('\n'*1)
+        comments += ('/*组件输出类接口声明\n* 命名方式: 存放类+实际类+实际类功能\n')
+        comments += ('***********************************************/\n')
+        comments += ('//void vfbM%s_vfbO%s_example(hvfbO%s t);\n' %(name,name,name))
+        comments += ('\n'*1)
+        comments += ('/*组件管理类实例\n')
+        comments += ('***********************************************/\n')
+        comments += ('extern vfbM%s vfbM%sA;\n' %(name,name))
+        comments += ('\n'*1)
+        return comments
+    
     def cpnSourceInitFuncEntity(self,initName,outName,injSource):
         funcEntity = ("(void){\n")
         funcEntity += ("    int16 rtv = 0;\n\n")
@@ -379,7 +413,7 @@ class cpnShell:
         comments += ('/***********************************************************\n')
         comments += ('* 组件输入定义\n')
         comments += ('***********************************************************/\n')
-        funcEntity = ('(hvfbI%s cthis, %s %s){\n' %(name,name,name))
+        funcEntity = ('(hvfbI%s cthis, h%s %s){\n' %(name,name,name))
         funcEntity += ('    cthis->%s = %s;\n' %(name,name))
         funcEntity += ('    //TODO\n')
         funcEntity += ('\n    return cthis;\n}')
@@ -406,7 +440,7 @@ class cpnShell:
         comments = ('/***********************************************************\n')
         comments += ('* 组件初始化\n')
         comments += ('***********************************************************/\n')
-        funcEntity = self.cpnSourceInitFuncEntity(name,'vfbO'+name,'&vfbO%sA, &sm%s[0]' %(name,name))
+        funcEntity = self.cpnSourceInitFuncEntity(name,'vfbO'+name,'&sm%s[0], &vfbO%sA' %(name,name))
         comments += self.cpnHeaerAndSourceInitFuncComment('',name,funcEntity,'组件初始化')
         comments += ('\n'*1)
         comments += ('/***********************************************************\n')
@@ -420,9 +454,9 @@ class cpnShell:
         comments = ('/***********************************************************\n')
         comments += ('* 组件定义\n')
         comments += ('***********************************************************/\n')
-        funcEntity = ('(h%s cthis, hvfbO%s vfbO%s, hstaAct sm%s){\n' %(name,name,name,name))
-        funcEntity += ('    cthis->vfbO%s = vfbO%s;\n' %(name,name))
+        funcEntity = ('(h%s cthis, hstaAct sm%s, hvfbO%s vfbO%s){\n' %(name,name,name,name))
         funcEntity += ('    cthis->sm%s = sm%s;\n' %(name,name))
+        funcEntity += ('    cthis->vfbO%s = vfbO%s;\n' %(name,name))
         funcEntity += ('    //TODO\n')
         funcEntity += ('\n    return cthis;\n}')
         comments += self.cpnHeaerAndSourceClassInitFuncComment(name,funcEntity,'组件类初始化函数')
@@ -441,6 +475,13 @@ class cpnShell:
         funcEntity = ('(%s){\n    return OOPC_TRUE;\n}' %name)
         comments += self.cpnHeaerAndSourceCDFuncComment(name,funcEntity,'组件类析构函数')
         comments += ('\n'*1)
+        comments += ('/***********************************************************\n')
+        comments += ('* 组件异步调度功能函数\n')
+        comments += ('***********************************************************/\n')
+        comments += ('/*异步调度功能函数\n')
+        comments += ('***********************************************/\n')
+        comments += ('//void %s_abi_example(void){\n//  //TODO\n//}\n' %name)
+        comments += ('\n'*2)
         comments += ('/***********************************************************\n')
         comments += ('* 组件实例化\n')
         comments += ('***********************************************************/\n')
@@ -493,6 +534,65 @@ class cpnShell:
         comments += ('vfbO%s vfbO%sA;\n' %(name,name))
         comments += ('\n'*1)
         return comments
+    
+    def cpnSourcevfbMInitFuncEntity(self,name):
+        funcEntity = ("(void){\n")
+        funcEntity += ("    int16 rtv = 0;\n\n")
+        funcEntity += ("    CN(vfbM%s, &vfbM%sA, &vfbO%sA, &vfbIcasSchA);\n" %(name,name,name))
+        funcEntity += ("    if(OPRS(vfbM%sA) != OOPC_NULL){\n" %name)
+        funcEntity += ("        vfbM%sA.vfbO%s->schParam.id = %s_id_priority_cfg;\n" %(name,name,name))
+        funcEntity += ("        vfbM%sA.vfbO%s->schParam.prdTick = (%s_PRD_TICK_CFG / CASSCH_TIMER_PRD_CFG);\n" %(name,name,name.upper()))
+        funcEntity += ("        vfbM%sA.vfbO%s->schParam.startTick = (%s_PRD_TICK_CFG / CASSCH_TIMER_PRD_CFG);\n" %(name,name,name.upper()))
+        funcEntity += ("        vfbM%sA.vfbIcasSchA->addTask(vfbIcasSchA.self,\n" %name)
+        funcEntity += ("            vfbM%sA.vfbO%s->schParam.id, vfbM%sA.vfbO%s->schParam.schTask,\n" %(name,name,name,name))
+        funcEntity += ("            vfbM%sA.vfbO%s->schParam.prdTick, vfbM%sA.vfbO%s->schParam.startTick)\n" %(name,name,name,name))
+        funcEntity += ("\n        rtv = 0;\n    }else{\n        rtv = -1;\n    }\n")
+        funcEntity += ("\n    return rtv;\n}")
+        return funcEntity
+    def cpnSourceGenerateVfbMcpnComment(self,name):
+        '''组件输入定义'''
+        comments = ('/*组件调度id临时配置，组件实际使用时必须在vbfMCfg.h中配置\n')
+        comments += ('***********************************************************/\n')
+        comments += ('#define %s_id_priority_cfg   0\n' %name)
+        comments += ('\n'*2)
+        comments += ('/***********************************************************\n')
+        comments += ('* 组件管理初始化\n')
+        comments += ('***********************************************************/\n')
+        funcEntity = self.cpnSourcevfbMInitFuncEntity(name)
+        comments += self.cpnHeaerAndSourceInitFuncComment('','vfbM'+name,funcEntity,'组件管理初始化')
+        comments += ('\n'*1)
+        comments += ('/***********************************************************\n')
+        comments += ('* 组件管理定义\n')
+        comments += ('***********************************************************/\n')
+        funcEntity = ('(hvfbM%s cthis, hvfbO%s vfbO%s, hvfbIcasSch vfbIcasSch){\n' %(name,name,name))
+        funcEntity += ('    cthis->vfbO%s = vfbO%s;\n' %(name,name))
+        funcEntity += ('    cthis->vfbIcasSch = vfbIcasSch;\n')
+        funcEntity += ('    //TODO\n')
+        funcEntity += ('\n    return cthis;\n}')
+        comments += self.cpnHeaerAndSourceClassInitFuncComment('vfbM'+name,funcEntity,'组件管理类初始化函数')
+        funcEntity = ('(vfbM%s){\n' %name)
+        funcEntity += ('    cthis->init = vfbM%s_init;\n' %name)
+        funcEntity += ('    //TODO\n')
+        funcEntity += ('\n    return cthis;\n}')
+        comments += self.cpnHeaerAndSourceCCFuncComment('vfbM'+name,funcEntity,'组件管理类构造函数')
+        funcEntity = ('(vfbM%s){\n    return OOPC_TRUE;\n}' %name)
+        comments += self.cpnHeaerAndSourceCDFuncComment('vfbM'+name,funcEntity,'组件管理类析构函数')
+        comments += ('\n'*1)
+        comments += ('/***********************************************************\n')
+        comments += ('* 组件输出类接口定义\n')
+        comments += ('***********************************************************/\n')
+        comments += ('/*组件输出类功能函数\n')
+        comments += ('***********************************************/\n')
+        comments += ('//void vfbM%s_vfbO%s_example(hvfbO%s t){\n//  //TODO\n//}\n' %(name,name,name))
+        comments += ('\n'*2)
+        comments += ('/***********************************************************\n')
+        comments += ('* 组件管理实例化\n')
+        comments += ('***********************************************************/\n')
+        comments += ('/*组件管理类实例\n')
+        comments += ('***********************************************/\n')
+        comments += ('vfbM%s vfbM%sA;\n' %(name,name))
+        comments += ('\n'*1)
+        return comments
     # ======================================================
 
     
@@ -530,12 +630,14 @@ class cpnShell:
         
         生成组件对象、组件输入对象、组件输出对象"""
         fh = open(name+'.h',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 输入类、组件类、输出类数据类型声明头文件' %name
         cm = self.generateFileHeadComment(name+'.h')
+        self.__fileComments['@brief'] = ':'
         cm += "#ifndef %s_H_\n" %name.upper()
         cm += "#define %s_H_\n" %name.upper()
         cm += ("\n"*1)
-        cm += ("#include \"..\\..\\01_std\\std.h\"\n") 
-        cm += ("#include \"..\\..\\06_cas\\casSch\\casSch.h\"\n") 
+        cm += ("#include \"..\\..\\%s_std\\std.h\"\n" %self.__cpnTypeIndex['std']) 
+        cm += ("#include \"..\\..\\%s_cas\\casSch\\casSch.h\"\n" %self.__cpnTypeIndex['cas']) 
         cm += ("#include \"%sCfg.h\"\n" %name) 
         cm += ("#include \"%sErrCode.h\"\n" %name)
         cm += ("\n"*1)
@@ -565,14 +667,16 @@ class cpnShell:
         生成组件基本的配置参数"""
         cpnlen = len(name)
         fh = open(name+'Cfg.h',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 配置头文件' %name
         cm = self.generateFileHeadComment(name+'Cfg.h')
+        self.__fileComments['@brief'] = ':'
         cm += "#ifndef %sCFG_H_\n" %name.upper()
         cm += "#define %sCFG_H_\n" %name.upper()
         cm += ("\n"*1)
         cm += ("/*组件调度参数配置\n")
         cm += ('***********************************************************/\n')
-        cm += ("#define %s_PRD_TICK_CFG        10000000.0L    // 任务调度周期配置，单位ns\n"  %name.upper())
-        cm += ("#define %s_START_TICK_CFG      3000000.0L     // 任务调度启动配置，单位ns\n"  %name.upper())
+        cm += ("#define %s_PRD_TICK_CFG        10000000.0L    // 任务调度周期配置(ns),10ms\n"  %name.upper())
+        cm += ("#define %s_START_TICK_CFG      3000000.0L     // 任务调度启动配置(ns),3ms\n"  %name.upper())
         cm += ("\n"*1)
         cm += "#endif\n\n"
         cm += self.generateFileEndComment()
@@ -585,7 +689,9 @@ class cpnShell:
         生成组件内部各部分的错误码"""
         cpnlen = len(name)
         fh = open(name+'ErrCode.h',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 内部各组成部分错误码定义头文件' %name
         cm = self.generateFileHeadComment(name+'ErrCode.h')
+        self.__fileComments['@brief'] = ':'
         cm += "#ifndef %sERRCODE_H_\n" %name.upper()
         cm += "#define %sERRCODE_H_\n" %name.upper()
         cm += ("\n"*1)
@@ -607,15 +713,17 @@ class cpnShell:
         cm += ("\n"*1)
         cm += ("/*errDefine\n")
         idspace = (18-cpnlen) * ' '
-        errspace = (32-cpnlen) * ' '
+        idspace2 = (53+cpnlen) * ' '
+        errspace = 27 * ' '
+        errspace2 = 8 * ' '
         cm += ('************************************************************************************************************************\n')
         cm += ("*                                | %sPartId |   errCode  |  errClassify  |  errRanking     |\n" %name)
         cm += ('***********************************************************************************************************************/\n')
-        cm += ("#define %s_part1_pi%s0                                                          // 组件部件1\n" %(name,idspace))
-        cm += ("#define %s_part1_err1%s0        // EC_EC_cie       EC_ER_warning  // 组件部件1错误1\n" %(name,errspace))
+        cm += ("#define %s_part1_pi%s0%s// 组件部件1\n" %(name,idspace,idspace2))
+        cm += ("#define %s_part1_err1%s0%s// EC_EC_cie       EC_ER_warning  // 组件部件1错误1\n" %(name,errspace,errspace2))
         cm += ('/**********************************************************************************************************************/\n')
-        cm += ("#define %s_part2_pi%s1                                                          // 组件部件2\n" %(name,idspace))
-        cm += ("#define %s_part2_err1%s0        // EC_EC_cie       EC_ER_warning  // 组件部件2错误1\n" %(name,errspace))
+        cm += ("#define %s_part2_pi%s1%s// 组件部件1\n" %(name,idspace,idspace2))
+        cm += ("#define %s_part2_err1%s0%s// EC_EC_cie       EC_ER_warning  // 组件部件1错误1\n" %(name,errspace,errspace2))
         cm += ('/**********************************************************************************************************************/\n')
         cm += ("\n"*1)
         cm += "#endif\n\n"
@@ -628,7 +736,9 @@ class cpnShell:
         
         生成组件输入类实现方式"""
         fh = open('vfbI'+name+'.c',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 输入类定义' %name
         cm = self.generateFileHeadComment('vfbI'+name+'.c')
+        self.__fileComments['@brief'] = ':'
         cm += ("#include \"%s.h\"\n" %name) 
         cm += ("\n"*1)
         cm += self.cpnSourceGenerateVfbIcpnComment(name)
@@ -642,7 +752,9 @@ class cpnShell:
         
         生成组件类实现方式"""
         fh = open(name+'.c',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 组件类定义' %name
         cm = self.generateFileHeadComment(name+'.c')
+        self.__fileComments['@brief'] = ':'
         cm += ("#include \"%s.h\"\n" %name) 
         cm += ("\n"*1)
         cm += self.cpnSourceGenerateCpnInitAndSchComment(name)
@@ -664,7 +776,8 @@ class cpnShell:
         funcEntity += ('    //TODO\n')
         funcEntity += ('\n    rec->next = sm%s_sta_sta1;\n}' %name)
         cm += self.cpnHeaerAndSourceSMFuncComment(name,'init',funcEntity,'sm%s_act_init' %name)
-        funcEntity = ('(void *hStaRec){\n    hsm%sRec rec = (hsm%sRec)hStaRec;\n    //TODO\n}' %(name,name))
+        funcEntity = ('(void *hStaRec){\n    hsm%sRec rec = (hsm%sRec)hStaRec;\n    //TODO\n' %(name,name))
+        funcEntity += ('\n    rec->next = sm%s_sta_default;\n}' %name)
         cm += self.cpnHeaerAndSourceSMFuncComment(name,'sta1',funcEntity,'sm%s_act_sta1' %name)
         cm += self.cpnHeaerAndSourceSMFuncComment(name,'sta2',funcEntity,'sm%s_act_sta2' %name)
         cm += self.cpnHeaerAndSourceSMFuncComment(name,'default',funcEntity,'sm%s_act_default' %name)
@@ -680,7 +793,9 @@ class cpnShell:
         
         生成组件输出类实现方式"""
         fh = open('vfbO'+name+'.c',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 输出类定义' %name
         cm = self.generateFileHeadComment('vfbO'+name+'.c')
+        self.__fileComments['@brief'] = ':'
         cm += ("#include \"%s.h\"\n" %name) 
         cm += ("\n"*1)
         cm += self.cpnSourceGenerateVfbOcpnComment(name)
@@ -689,6 +804,49 @@ class cpnShell:
         fh.write(cm)
         fh.close()
     
+    def createVfbMCpnHeader(self,name):
+        """组件管理模块头文件
+        
+        生成组件管理对象"""
+        fh = open('vfbM'+name+'.h',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 管理类数据类型声明' %name
+        cm = self.generateFileHeadComment('vfbM'+name+'.h')
+        self.__fileComments['@brief'] = ':'
+        cm += "#ifndef VFBM%s_H_\n" %name.upper()
+        cm += "#define VFBM%s_H_\n" %name.upper()
+        cm += ("\n"*1)
+        cm += ("#include \"..\\..\\%s_std\\std.h\"\n" %self.__cpnTypeIndex['std']) 
+        cm += ("#include \"..\\..\\%s_cas\\casSch\\casSch.h\"\n" %self.__cpnTypeIndex['cas'])
+        cm += ("#include \"..\\..\\%s_%s\\%s\\%s.h\"\n" %(self.__cpnTypeIndex[self.__cpnType],self.__cpnType,name,name))
+        cm += ("#include \"..\\vfbMCfg.h\"\n")
+        cm += ("\n"*1)
+        cm += ('/***********************************************************\n')
+        cm += ('* 组件管理初始化\n')
+        cm += ('***********************************************************/\n')
+        cm += self.cpnHeaerAndSourceInitFuncComment('','vfbM'+name,'(void);','组件管理初始化')
+        cm += ('\n'*1)
+        cm += self.cpnHeaderGenerateVfbMcpnComment(name)
+        cm += ("\n"*1)
+        cm += "#endif\n\n"
+        cm += self.generateFileEndComment()
+        fh.write(cm)
+        fh.close()
+        
+    def createVfbMcpnSource(self,name):
+        """组件输入类源文件
+        
+        生成组件输入类实现方式"""
+        fh = open('vfbM'+name+'.c',mode = 'w',encoding=self.__encoding)
+        self.__fileComments['@brief'] = ':组件%s 管理类定义' %name
+        cm = self.generateFileHeadComment('vfbM'+name+'.c')
+        self.__fileComments['@brief'] = ':'
+        cm += ("#include \"%s.h\"\n" %name) 
+        cm += ("\n"*1)
+        cm += self.cpnSourceGenerateVfbMcpnComment(name)
+        cm += ("\n"*1)
+        cm += self.generateFileEndComment()
+        fh.write(cm)
+        fh.close()
         
     # ======================================================
     
@@ -707,17 +865,17 @@ class cpnShell:
     
     def cpnConstructorCommandInit(self):
         '''初始化控制命令'''
-        self.__cpnConstructorCommand['01_std'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['02_bm'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['03_bsp'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['04_abi'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['05_cpnInit'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['06_cas'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['07_cs'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['08_cuf'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['09_cpc'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['10_ccc'] = self.bspcpnGenFunc
-        self.__cpnConstructorCommand['11_vfbM'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['std'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['bm'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['bsp'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['abi'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['cpnInit'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['cas'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['cs'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['cuf'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['cpc'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['ccc'] = self.bspcpnGenFunc
+        self.__cpnConstructorCommand['vfbM'] = self.bspcpnGenFunc
     
     def cpnFolderExistJudgeAndCreat(self):
         """对组件所有需要的文件进行判断是否存在
@@ -725,46 +883,62 @@ class cpnShell:
         1.如果文件夹存在由不会生成相应的组件，存在文件夹则可能存在文件，不应该对存在的文件进行覆盖
         2.如果所有文件夹都不存在，则会生成所有需要的文件夹
         3.所有操作都是切到对应文件夹进行操作之后，再退回到脚本所有文件夹"""
-        for cpnpath in self.__cpnFolder:
-            if((self.__cpnFolder[cpnpath] != ' ')and(self.__cpnFolderExist == 0)):
-                if(os.path.exists(cpnpath)):
-                    os.chdir(cpnpath)
-                    if(os.path.exists(self.__cpnFolder[cpnpath])):
+        for cpnIndex in self.__cpnFolder:
+            if((self.__cpnFolder[cpnIndex] != ' ')and(self.__cpnFolderExist == 0)):
+                if(os.path.exists(self.__cpnTypeIndex[cpnIndex]+'_'+cpnIndex)):
+                    os.chdir(self.__cpnTypeIndex[cpnIndex]+'_'+cpnIndex)
+                    if(os.path.exists(self.__cpnFolder[cpnIndex])):
                         self.__cpnFolderExist = 1
-                        sys.stderr.write("%s reference folder exist, please delete and try again\n" %self.__cpnFolder[cpnpath])
+                        sys.stderr.write("%s reference folder exist, please delete and try again\n" %self.__cpnFolder[cpnIndex])
                     else:
-                        os.mkdir(self.__cpnFolder[cpnpath])
+                        os.mkdir(self.__cpnFolder[cpnIndex])
                     os.chdir('..')
                 else:
-                    os.makedirs(cpnpath+'\\'+self.__cpnFolder[cpnpath])
+                    os.makedirs(self.__cpnTypeIndex[cpnIndex]+'_'+cpnIndex+'\\'+self.__cpnFolder[cpnIndex])
 
     def bspcpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['03_bsp'] != ' '):
-            os.chdir('03_bsp\\'+self.__cpnFolder['03_bsp'])
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['bsp'] != ' '):
+            os.chdir(self.__cpnTypeIndex['bsp']+'_bsp\\'+self.__cpnFolder['bsp'])
             self.createSource('bsp'+self.__cpnType+self.__cpnName)
             self.createHeader('bsp'+self.__cpnType+self.__cpnName)
             os.chdir('..')
             os.chdir('..')
             
     def abicpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['04_abi'] != ' '):
-            os.chdir('04_abi\\'+self.__cpnFolder['04_abi'])
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['abi'] != ' '):
+            os.chdir(self.__cpnTypeIndex['abi']+'_abi\\'+self.__cpnFolder['abi'])
             self.createSource('abi'+self.__cpnType+self.__cpnName)
             self.createHeader('abi'+self.__cpnType+self.__cpnName)
             os.chdir('..')
             os.chdir('..')    
-        
+    
+    def cpnGenFunc(self):
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder[self.__cpnType] != ' '):
+            os.chdir(self.__cpnTypeIndex[self.__cpnType]+'_'+self.__cpnType+'\\'+self.__cpnFolder[self.__cpnType])
+            self.createCpnHeader(self.__cpnType+self.__cpnName)
+            self.createcpnCfgHeader(self.__cpnType+self.__cpnName)
+            self.createcpnErrCodeHeader(self.__cpnType+self.__cpnName)
+            self.createVfbIcpnSource(self.__cpnType+self.__cpnName)
+            self.createCpnSource(self.__cpnType+self.__cpnName)
+            self.createVfbOcpnSource(self.__cpnType+self.__cpnName)
+            os.chdir('..')
+            os.chdir('..')
+    
     def cascpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['06_cas'] != ' '):
-            os.chdir('06_cas\\'+self.__cpnFolder['06_cas'])
-            self.createSource(self.__cpnType+self.__cpnName)
-            self.createHeader(self.__cpnType+self.__cpnName)
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['cas'] != ' '):
+            os.chdir(self.__cpnTypeIndex['cas']+'_cas\\'+self.__cpnFolder['cas'])
+            self.createCpnHeader(self.__cpnType+self.__cpnName)
+            self.createcpnCfgHeader(self.__cpnType+self.__cpnName)
+            self.createcpnErrCodeHeader(self.__cpnType+self.__cpnName)
+            self.createVfbIcpnSource(self.__cpnType+self.__cpnName)
+            self.createCpnSource(self.__cpnType+self.__cpnName)
+            self.createVfbOcpnSource(self.__cpnType+self.__cpnName)
             os.chdir('..')
             os.chdir('..')
         
     def cscpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['07_cs'] != ' '):
-            os.chdir('07_cs\\'+self.__cpnFolder['07_cs'])
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['cs'] != ' '):
+            os.chdir(self.__cpnTypeIndex['cs']+'_cs\\'+self.__cpnFolder['cs'])
             self.createCpnHeader(self.__cpnType+self.__cpnName)
             self.createcpnCfgHeader(self.__cpnType+self.__cpnName)
             self.createcpnErrCodeHeader(self.__cpnType+self.__cpnName)
@@ -775,34 +949,46 @@ class cpnShell:
             os.chdir('..')
     
     def cufcpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['08_cuf'] != ' '):
-            os.chdir('08_cuf\\'+self.__cpnFolder['08_cuf'])
-            self.createSource(self.__cpnType+self.__cpnName)
-            self.createHeader(self.__cpnType+self.__cpnName)
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['cuf'] != ' '):
+            os.chdir(self.__cpnTypeIndex['cuf']+'_cuf\\'+self.__cpnFolder['cuf'])
+            self.createCpnHeader(self.__cpnType+self.__cpnName)
+            self.createcpnCfgHeader(self.__cpnType+self.__cpnName)
+            self.createcpnErrCodeHeader(self.__cpnType+self.__cpnName)
+            self.createVfbIcpnSource(self.__cpnType+self.__cpnName)
+            self.createCpnSource(self.__cpnType+self.__cpnName)
+            self.createVfbOcpnSource(self.__cpnType+self.__cpnName)
             os.chdir('..')
             os.chdir('..')
 
     def cpccpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['09_cpc'] != ' '):
-            os.chdir('09_cpc\\'+self.__cpnFolder['09_cpc'])
-            self.createSource(self.__cpnType+self.__cpnName)
-            self.createHeader(self.__cpnType+self.__cpnName)
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['cpc'] != ' '):
+            os.chdir(self.__cpnTypeIndex['cpc']+'_cpc\\'+self.__cpnFolder['cpc'])
+            self.createCpnHeader(self.__cpnType+self.__cpnName)
+            self.createcpnCfgHeader(self.__cpnType+self.__cpnName)
+            self.createcpnErrCodeHeader(self.__cpnType+self.__cpnName)
+            self.createVfbIcpnSource(self.__cpnType+self.__cpnName)
+            self.createCpnSource(self.__cpnType+self.__cpnName)
+            self.createVfbOcpnSource(self.__cpnType+self.__cpnName)
             os.chdir('..')
             os.chdir('..')
 
     def ccccpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['10_ccc'] != ' '):
-            os.chdir('10_ccc\\'+self.__cpnFolder['10_ccc'])
-            self.createSource(self.__cpnType+self.__cpnName)
-            self.createHeader(self.__cpnType+self.__cpnName)
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['ccc'] != ' '):
+            os.chdir(self.__cpnTypeIndex['ccc']+'_ccc\\'+self.__cpnFolder['ccc'])
+            self.createCpnHeader(self.__cpnType+self.__cpnName)
+            self.createcpnCfgHeader(self.__cpnType+self.__cpnName)
+            self.createcpnErrCodeHeader(self.__cpnType+self.__cpnName)
+            self.createVfbIcpnSource(self.__cpnType+self.__cpnName)
+            self.createCpnSource(self.__cpnType+self.__cpnName)
+            self.createVfbOcpnSource(self.__cpnType+self.__cpnName)
             os.chdir('..')
             os.chdir('..')
 
     def vfbMcpnGenFunc(self):
-        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['11_vfbM'] != ' '):
-            os.chdir('11_vfbM\\'+self.__cpnFolder['11_vfbM'])
-            self.createSource('vfbM'+self.__cpnType+self.__cpnName)
-            self.createHeader('vfbM'+self.__cpnType+self.__cpnName)
+        if(self.__cpnFolderExist == 0)and(self.__cpnFolder['vfbM'] != ' '):
+            os.chdir(self.__cpnTypeIndex['vfbM']+'_vfbM\\'+self.__cpnFolder['vfbM'])
+            self.createVfbMCpnHeader(self.__cpnType+self.__cpnName)
+            self.createVfbMcpnSource(self.__cpnType+self.__cpnName)
             os.chdir('..')
             os.chdir('..')
     # ======================================================
@@ -810,9 +996,9 @@ class cpnShell:
         
     def createTemp(self):    
         self.cpnFolderExistJudgeAndCreat()
-        for folder in self.__cpnFolder:
-            if(self.__cpnFolder[folder] != ' '):
-                self.__cpnConstructorCommand[folder]()
+        for cpnIndex in self.__cpnFolder:
+            if(self.__cpnFolder[cpnIndex] != ' '):
+                self.__cpnConstructorCommand[cpnIndex]()
         
         
 if __name__ == '__main__':

@@ -1,20 +1,20 @@
 /**************************************************************************
 * @copyright    :Copyright(C), 2018, pxf, person.
-* @file         :abicsLed.h
+* @file         :abicasSch.h
 * @author       :pxf
 * @version      :v1.0
-* @date         :2018/08/26 21:32:19
+* @date         :2018/08/27 22:43:29
 * @brief        :
 * @others       :
-* @history      :180826 pxf 初次建立
+* @history      :180827 pxf 初次建立
 ***************************************************************************/
 
-#ifndef ABICSLED_H_
-#define ABICSLED_H_
+#ifndef ABICASSCH_H_
+#define ABICASSCH_H_
 
 
 /***********************************************************
-* @function       :abicsLed()
+* @function       :abicasSch()
 * @description    :
 * @input          :
 * @output         :
@@ -22,7 +22,7 @@
 * @calledBy       :
 * @others         :
 ***********************************************************/
-void abicsLed(void);
+void abicasSch(void);
 
 
 #endif
