@@ -637,21 +637,21 @@ class cpnShell:
         fh = open(name+'.c',mode = 'w',encoding=self.__encoding)
         cm = self.generateFileHeadComment(name+'.c')
         cm += ("#include \"%s.h\"\n" %name) 
-        cm += ("\n"*2)
+        cm += ("\n"*1)
         cm += self.generateFunctionComment(name+'()')
         cm += ("void %s(void)\n{}\n" %name)
         cm += ("\n"*2)
         cm += self.generateFileEndComment()
         fh.write(cm)
         fh.close()
-    # 生成源文件
+    # 生成头文件
     def createHeader(self,name):
         '''生成头文件'''
         fh = open(name+'.h',mode = 'w',encoding=self.__encoding)
         cm = self.generateFileHeadComment(name+'.h')
         cm += "#ifndef %s_H_\n" %name.upper()
         cm += "#define %s_H_\n" %name.upper()
-        cm += ("\n"*2)
+        cm += ("\n"*1)
         cm += self.generateFunctionComment(name+'()')
         cm += ("void %s(void);\n" %name)
         cm += ("\n"*2)
