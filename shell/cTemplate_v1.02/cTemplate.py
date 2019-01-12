@@ -8,7 +8,7 @@ import os
 
 class cTemplate:
     """文件生成脚本
-    使用方法：python sm.py path filename
+    使用方法：python cTemplate.py path filename
     脚本只能有3个参数，
     路径path，当前路径可以使用/或\，其他路径一定要以非/或\开头，否则生成不了
     filename根据需要选取"""
@@ -28,6 +28,15 @@ class cTemplate:
                       '@others':':',
                       '@history':':'+__timeFormatShort+' pxf 初建立',
     }
+    __fileComments2 = {'Copyright': ': Copyright(C), 2019, pxf, person.',
+                      'File name':': ',
+                      'Author':': pxf',
+                      'Version':': v1.0',
+                      'Created on':': '+__timeFormatFull,
+                      'Description':': ',
+                      'Others':': ',
+                      'History':': '+__timeFormatShort+' pxf 初建立',
+    }
     __functionComments = {'@function':':',
                       '@description':':',
                       '@input':':',
@@ -36,13 +45,14 @@ class cTemplate:
                       '@calledBy':':',
                       '@others':':',
     }
-    __functionComments2 = {'名称':':无',
-                      '输入':':无',
-                      '输出':':无',
-                      '其他':':无',
+    __functionComments2 = {'名称':': 无',
+                      '输入':': 无',
+                      '输出':': 无',
+                      '其他':': 无',
     }
 
     __fCommentsOrder = ('@copyright','@file','@author','@version','@date','@brief','@others','@history')
+    __fCommentsOrder2 = ('Copyright','File name','Author','Version','Created on','Description','Others','History')
     __funcCommentsOrder = ('@function','@description','@input','@output','@calls','@calledBy','@others')
     __funcCommentsOrder2 = ('名称','输入','输出','其他')
 
@@ -88,6 +98,24 @@ class cTemplate:
             comments += ('* '+ k + alignSpace + self.__fileComments[k] + '\n')
         comments += ('***************************************************************************/\n\n')
         return comments
+        
+    def generateFileHeadComment2(self,name):
+        """生成文件头注释"""
+        #set filename for every file generate
+        self.__fileComments2['File name'] = ': '+name
+        comments = ('/**************************************************************************\n')
+        #find max length of string
+        maxLen = 0
+        for s in self.__fCommentsOrder2:
+            if(len(s) > maxLen):
+                maxLen = len(s)
+        #align space generate line
+        for k in self.__fCommentsOrder2:
+            alignSpaceAmount = maxLen - len(k) + 2
+            alignSpace = alignSpaceAmount * ' '
+            comments += ('* '+ k + alignSpace + self.__fileComments2[k] + '\n')
+        comments += ('***************************************************************************/\n\n')
+        return comments
 
     def generateFileEndComment(self):
         """生成文件尾注释"""
@@ -114,10 +142,10 @@ class cTemplate:
     def generateFunctionComment2(self,name,input,output,others):
         """生成函数头注释类型2"""
         #set function name for every function generate
-        self.__functionComments2['名称'] = ':'+name
-        self.__functionComments2['输入'] = ':'+input
-        self.__functionComments2['输出'] = ':'+output
-        self.__functionComments2['其他'] = ':'+others
+        self.__functionComments2['名称'] = ': '+name
+        self.__functionComments2['输入'] = ': '+input
+        self.__functionComments2['输出'] = ': '+output
+        self.__functionComments2['其他'] = ': '+others
         comments = ('')
         #find max length of string
         maxLen = 0
@@ -143,12 +171,12 @@ class cTemplate:
     def createSource(self):
         """生成源文件"""
         fh = open(self.__sourceName,mode = 'w',encoding=self.__encoding)
-        cm = self.generateFileHeadComment(self.__sourceName)
+        cm = self.generateFileHeadComment2(self.__sourceName)
         cm += ("#include \"%s\"\n" %self.__headerName) 
-        cm += ("\n"*2)
+        cm += ("\n"*1)
         cm += self.generateFunctionComment2(self.__fileName+'()','无','无','无')
         cm += ("void %s(void){\n}\n" %self.__fileName)
-        cm += ("\n"*2)
+        cm += ("\n"*1)
         cm += self.generateFileEndComment()
         fh.write(cm)
         fh.close()
@@ -156,13 +184,13 @@ class cTemplate:
     def createHeader(self):
         """生成头文件"""
         fh = open(self.__headerName,mode = 'w',encoding=self.__encoding)
-        cm = self.generateFileHeadComment(self.__headerName)
+        cm = self.generateFileHeadComment2(self.__headerName)
         cm += "#ifndef %s_H_\n" %self.__fileName.upper()
         cm += "#define %s_H_\n" %self.__fileName.upper()
-        cm += ("\n"*2)
+        cm += ("\n"*1)
         cm += self.generateFunctionComment2(self.__fileName+'()','无','无','无')
         cm += ("void %s(void);\n" %self.__fileName)
-        cm += ("\n"*2)
+        cm += ("\n"*1)
         cm += "#endif /*%s_H_*/\n\n" %self.__fileName.upper()
         cm += self.generateFileEndComment()
         fh.write(cm)

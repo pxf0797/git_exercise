@@ -1,24 +1,22 @@
 /**************************************************************************
-* @copyright    :Copyright(C), 2019, pxf, person.
-* @file         :test.c
-* @author       :pxf
-* @version      :v1.0
-* @date         :2019/01/12 17:48:40
-* @brief        :
-* @others       :
-* @history      :190112 pxf 初建立
+* Copyright    : Copyright(C), 2019, pxf, person.
+* File name    : test.c
+* Author       : pxf
+* Version      : v1.0
+* Created on   : 2019/01/12 21:44:17
+* Description  : 
+* Others       : 
+* History      : 190112 pxf 初建立
 ***************************************************************************/
 
 #include "test.h"
 
-
-/*名称 :test()
-* 输入 :无
-* 输出 :无
-* 其他 :无
+/*名称 : test()
+* 输入 : 无
+* 输出 : 无
+* 其他 : 无
 ***********************************************/
 void test(void){
 }
-
 
 /**************************** Copyright(C) pxf ****************************/
